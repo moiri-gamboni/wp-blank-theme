@@ -63,23 +63,29 @@ add_action( 'after_setup_theme', 'wpbt_setup' );
  * @return void
  */
 function wpbt_redirect( $url, $status_code = 303 ) {
-	header( 'Location: ' . $url, true, $status_code );
+	header( 'Location: ' . sanitize_url( $url ), true, $status_code );
 	die();
 }
 
 /**
- * Load environment variables.
+ * Load the REDIRECTION_URL environment variable.
  *
- * @since 1.0.0
+ * @since 1.0.2
  *
- * @return void
+ * @return boolean Returns true on success or false on failure.
  */
-function wpbt_load_dotenv() {
-	if ( ! file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
-		return;
+function wpbt_load_redirect_url() {
+	if ( defined( 'WPBT_REDIRECTION_URL' ) ) {
+		return true;
 	}
-
-	require_once get_template_directory() . '/vendor/autoload.php';
-	$wpbt_dotenv = \Dotenv\Dotenv::createImmutable( __DIR__ );
-	$wpbt_dotenv->safeLoad();
+	$dotenv_path = get_template_directory() . '/.env';
+	if ( ! file_exists( $dotenv_path ) ) {
+		return false;
+	}
+	$dotenv = parse_ini_file( $dotenv_path );
+	if ( isset( $dotenv['REDIRECTION_URL'] ) ) {
+		define( 'WPBT_REDIRECTION_URL', $dotenv['REDIRECTION_URL'] );
+		return true;
+	}
+	return false;
 }

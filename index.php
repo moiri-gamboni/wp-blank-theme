@@ -12,8 +12,6 @@
  * @since   1.0.0
  */
 
-wpbt_load_dotenv();
-
-if ( isset( $_ENV['REDIRECTION_URL'] ) ) {
-	wpbt_redirect( sanitize_url( $_ENV['REDIRECTION_URL'] ) );
+if ( wpbt_load_redirect_url() ) {
+	wpbt_redirect( WPBT_REDIRECTION_URL );
 }

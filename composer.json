@@ -24,8 +24,7 @@
 		"fix": "phpcbf --standard=phpcs.xml"
 	},
 	"require": {
-		"composer/installers": "^1.0 || ^2.0",
-		"vlucas/phpdotenv": "^5.4"
+		"composer/installers": "^1.0 || ^2.0"
 	},
 	"require-dev": {
 		"wp-coding-standards/wpcs": "^3.0.0",

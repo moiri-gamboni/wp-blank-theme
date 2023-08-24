@@ -10,17 +10,15 @@ If the `REDIRECTION_URL` is specified, the user will be redirected to the given 
 
 1. Install this theme in the WordPress theme directory (`wp-content/themes/`).
 
-2. Install [Composer](https://getcomposer.org/) and run `composer install` in the theme's root folder to install dependencies.
-
-3. Then, in your theme folder, create a `.env` file :
+2. Then, in your theme folder, create a `.env` file :
 
 ```bash
 cp .env.example .env
 ```
 
-4. Replace the `REDIRECTION_URL` value with your frontend URL.
+3. Replace the `REDIRECTION_URL` value with your frontend URL.
 
-5. Finally, activate the theme in the WordPress admin dashboard.
+4. Finally, activate the theme in the WordPress admin dashboard.
 
 ## Additional notes
 
